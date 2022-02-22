@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+    <title>PokeDex</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Tom Sartori">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./ressources/favicon.ico" type="image/x-icon">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./style/general.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#">Pokédex</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!--    Search section-->
+    <section>
+        <label>
+            <input placeholder="Searchbar">
+        </label>
+    </section>
+
+    <!--    Sort section-->
+    <section class="row">
+        <a class="col s5 waves-effect waves-light btn-small">Randomize</a>
+
+        <a class="col s5 push-s2 waves-effect waves-light btn-small">Sort</a>
+    </section>
+    <div id="app">
+        <main>
+
+
+            <ul>
+
+                <li v-for="i in nbPokemonDisplayed " :key="i">
+                    <pokemon-list-display :id=i ></pokemon-list-display>
+                </li>
+
+            </ul>
+
+        </main>
+    </div>
+
+</div>
+
+
+
+<!-- Import App -->
+<script src="./script/main.js"></script>
+
+<!-- Import Components -->
+<script src="script/components/PokemonListDisplay.js"></script>
+
+
+<!-- Mount App -->
+<script>
+    const mountedApp = app.mount('#app')
+</script>
+
+</body>
+</html>

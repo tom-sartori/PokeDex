@@ -1,0 +1,27 @@
+nav {
+    text-align: center;
+}
+
+body {
+    background-color: grey;
+}
+
+li {
+    color: #fff;
+    list-style: none;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    display: block;
+    float: left;
+    position: relative;
+    margin: 0 .78125% 50px;
+    width: 23.4375%;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
