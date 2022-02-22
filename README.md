@@ -25,6 +25,9 @@ TODO
 
 
 - [ ] Abilities
+- [ ] Units
+- [ ] Darkmode
+- [ ] Weaknesses
 - [x] Favicon
 - [ ] Recheck css
 - [ ] Sort bar

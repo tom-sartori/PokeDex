@@ -8,14 +8,18 @@
     <meta name="author" content="Tom Sartori">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!--Favicon-->
     <link rel="shortcut icon" href="./ressources/favicon.ico" type="image/x-icon">
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--Style -->
+    <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="./style/general.css">
-    <!-- Compiled and minified JavaScript -->
+
+<!--Style Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<!--Vue JS 3-->
     <script src="https://unpkg.com/vue@3"></script>
 </head>
 
@@ -46,13 +50,16 @@
         <main>
 
 
-            <ul>
+<!--            <ul>-->
 
-                <li v-for="i in nbPokemonDisplayed " :key="i">
-                    <pokemon-list-display :id=i ></pokemon-list-display>
-                </li>
+<!--                <li v-for="i in nbPokemonDisplayed " :key="i">-->
+<!--                    <pokemon-list-display :id=i ></pokemon-list-display>-->
+<!--                </li>-->
 
-            </ul>
+<!--            </ul>-->
+
+            <pokemon-detail-display name="bulbasaur"></pokemon-detail-display>
+
 
         </main>
     </div>
@@ -60,12 +67,15 @@
 </div>
 
 
+<!--Import script-->
+<script src="./script/utils.js"></script>
 
 <!-- Import App -->
 <script src="./script/main.js"></script>
 
 <!-- Import Components -->
 <script src="script/components/PokemonListDisplay.js"></script>
+<script src="script/components/PokemonDetailDisplay.js"></script>
 
 
 <!-- Mount App -->

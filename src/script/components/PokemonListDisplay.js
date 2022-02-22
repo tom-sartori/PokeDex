@@ -3,7 +3,7 @@ app.component('pokemon-list-display', {
         id: {
             type: Number,
             required: false
-        },
+},
     },
     data() {
         return {
