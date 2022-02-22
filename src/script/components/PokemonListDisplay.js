@@ -3,7 +3,7 @@ app.component('pokemon-list-display', {
         name: {
             type: String,
             required: true
-},
+        },
     },
     data() {
         return {
@@ -21,7 +21,9 @@ app.component('pokemon-list-display', {
 
     },
     methods: {
-
+        setCurrentPokemon () {
+            this.$emit('set-current-pokemon', this.name)
+        }
     },
     computed: {
         srcImage () {
@@ -35,17 +37,19 @@ app.component('pokemon-list-display', {
     template:
     /*html*/
         `
-    <div>
-        <figure>
-            <img :alt="name" :src="srcImage">
-        </figure>
-
         <div>
-            <p>
+          <button v-on:click="setCurrentPokemon">
+            <figure>
+              <img :alt="name" :src="srcImage">
+            </figure>
+
+            <div>
+              <p>
                 <span>#</span> {{ this.largeId }}
-            </p>
-            <h5>{{ name }}</h5>
+              </p>
+              <h5>{{ name }}</h5>
+            </div>
+          </button>
         </div>
-  </div>
-`
+        `
 })

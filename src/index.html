@@ -8,62 +8,79 @@
     <meta name="author" content="Tom Sartori">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--Favicon-->
+    <!--Favicon-->
     <link rel="shortcut icon" href="./ressources/favicon.ico" type="image/x-icon">
 
-<!--Style -->
+    <!--Style -->
     <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="./style/general.css">
 
-<!--Style Materialize-->
+    <!--Style Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<!--Vue JS 3-->
+    <!--Vue JS 3-->
     <script src="https://unpkg.com/vue@3"></script>
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <a href="#">Pokédex</a>
-    </nav>
-</header>
+<div id="app">
 
-<div class="container">
+    <header>
+        <nav>
+            <button v-on:click="currentPokemon = ''">Pokédex</button>
+        </nav>
+    </header>
 
-    <!--    Search section-->
-    <section>
-        <label>
-            <input placeholder="Searchbar">
-        </label>
-    </section>
+    <div class="container">
 
-    <!--    Sort section-->
-    <section class="row">
-        <a class="col s5 waves-effect waves-light btn-small">Randomize</a>
+        <!--    Search section-->
+        <section>
+            <label>
+                <input placeholder="Searchbar">
+            </label>
+        </section>
 
-        <a class="col s5 push-s2 waves-effect waves-light btn-small">Sort</a>
-    </section>
-    <div id="app">
+        <!--    Sort section-->
+        <section class="row">
+            <a class="col s5 waves-effect waves-light btn-small">Randomize</a>
+
+            <a class="col s5 push-s2 waves-effect waves-light btn-small">Sort</a>
+        </section>
+
         <main>
 
 
-            <ul>
+            <div v-if="!currentPokemon">
+                <ul>
+                    <li v-for="name in listNamePokemon">
+                        <pokemon-list-display :name="name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>
+                    </li>
+                </ul>
+            </div>
 
-                <li v-for="name in listNamePokemon">
-                    <pokemon-list-display :name="name" ></pokemon-list-display>
-                </li>
+            <!--            <pokemon-list-display :name="test" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>-->
 
-            </ul>
 
-<!--            <pokemon-detail-display name="bulbasaur"></pokemon-detail-display>-->
+
+            <!--            <ul>-->
+            <!--                <li v-for="name in listNamePokemon">-->
+            <!--&lt;!&ndash;                    <pokemon-list-display :name="name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>&ndash;&gt;-->
+            <!--                    <pokemon-detail-display :name="name" ></pokemon-detail-display>-->
+            <!--                </li>-->
+            <!--            </ul>-->
+
+
+            <div v-if="currentPokemon">
+                <pokemon-detail-display :name="currentPokemon" ></pokemon-detail-display>
+            </div>
+
 
 
         </main>
-    </div>
 
+    </div>
 </div>
 
 

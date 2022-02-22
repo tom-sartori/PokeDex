@@ -17,7 +17,7 @@ app.component('pokemon-detail-display', {
         }
     },
     mounted() {
-        fetch('https://pokeapi.co/api/v2/pokemon/' + name)
+        fetch('https://pokeapi.co/api/v2/pokemon/' + this.name)
             .then(response => response.json())
             .then(data => {
                 this.id = data.id
@@ -33,7 +33,11 @@ app.component('pokemon-detail-display', {
             return capitalizeFirstLetter(name)
         },
         imgSrc () {
-            return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + idString(this.id) + '.png'
+            return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + this.largeId + '.png'
+        },
+        largeId () {
+            // If id = 1, return 001
+            return idString(this.id)
         }
     },
     template:
