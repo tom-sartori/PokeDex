@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             nbPokemonDisplayed: 12,
-            listNamePokemons: []
+            listNamePokemon: ['bulbasaur', 'ivysaur', 'venusaur', 'charmander']
         }
     },
 })

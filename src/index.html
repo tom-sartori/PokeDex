@@ -50,15 +50,15 @@
         <main>
 
 
-<!--            <ul>-->
+            <ul>
 
-<!--                <li v-for="i in nbPokemonDisplayed " :key="i">-->
-<!--                    <pokemon-list-display :id=i ></pokemon-list-display>-->
-<!--                </li>-->
+                <li v-for="name in listNamePokemon">
+                    <pokemon-list-display :name="name" ></pokemon-list-display>
+                </li>
 
-<!--            </ul>-->
+            </ul>
 
-            <pokemon-detail-display name="bulbasaur"></pokemon-detail-display>
+<!--            <pokemon-detail-display name="bulbasaur"></pokemon-detail-display>-->
 
 
         </main>
