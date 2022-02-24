@@ -33,7 +33,8 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <button v-on:click="refreshList" id="buttonPokedex" class="waves-effect waves-teal btn-flat">Pokédex</button>
+<!--             Onclick : On revient de la vue détail, donc on reset currentPokemon pour afficher la vue liste.-->
+                <button v-on:click="this.currentPokemon = ''" id="buttonPokedex" class="waves-effect waves-teal btn-flat">Pokédex</button>
             </div>
         </nav>
     </header>
@@ -43,7 +44,7 @@
         <!--    Search section-->
         <section class="sectionSearch">
             <label>
-                <input class="inputSearch" v-on:keypress.enter="searchPokemon" placeholder="Searchbar" value="">
+                <input id="inputSearch" v-on:keypress.enter="searchPokemon" placeholder="Searchbar" value="">
             </label>
         </section>
 

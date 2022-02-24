@@ -46,7 +46,9 @@ app.component('pokemon-detail-display', {
         },
         imgSrc () {
             this.fetchData()
-            return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + this.largeId + '.png'
+            if (this.id !== '00') {
+                return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + this.largeId + '.png'
+            }
         },
         largeId () {
             this.fetchData()

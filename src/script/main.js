@@ -43,10 +43,5 @@ const app = Vue.createApp({
                     event.target.classList.add('inputShake')
                 })
         },
-        refreshList () {    // Called when click on the pokedex button (nav bar).
-            if (this.currentPokemon) {   // On revient de la vue détail, donc on reset currentPokemon pour afficher la vue liste.
-                this.currentPokemon = ''
-            }
-        },
     },
 })
