@@ -11,10 +11,10 @@ const app = Vue.createApp({
         this.increaseListPokemon()
     },
     methods: {
-        updateCurrentPokemon(name) {
+        updateCurrentPokemon(name) {    // Stop the list view and put the detail view.
             this.currentPokemon = name
         },
-        increaseListPokemon () {
+        increaseListPokemon () {    // Triggered while scrolling down .
             fetch('https://pokeapi.co/api/v2/pokemon/?offset=' + this.offset + '&limit=' + this.limit)
                 .then(response => response.json())
                 .then(data => {
@@ -23,7 +23,8 @@ const app = Vue.createApp({
                 })
                 .catch(error => console.log(error.message))
         },
-        searchPokemon (event) {
+        searchPokemon (event) { // Triggered by search bar.
+            event.target.classList.remove('inputShake')
             fetch('https://pokeapi.co/api/v2/pokemon/' + event.target.value.toLowerCase())
                 .then(response => response.json())
                 .then(data => {
@@ -33,8 +34,14 @@ const app = Vue.createApp({
                     // let element = []
                     // element['name'] = data.name
                     // this.listPokemon.push(element)
+
+                    event.target.value = ''
                 })
-                .catch(error => console.log(error.message))
+                .catch(error => {
+                    // Add this class at the input when the value is incorect.
+                    // That make shake the input.
+                    event.target.classList.add('inputShake')
+                })
         },
         refreshList () {    // Called when click on the pokedex button (nav bar).
             if (this.currentPokemon) {   // On revient de la vue détail, donc on reset currentPokemon pour afficher la vue liste.

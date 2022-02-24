@@ -1,0 +1,19 @@
+
+.ulListPokemon {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 20px;
+}
+
+.buttonListPokemon {
+    border-radius: 10px;
+    border: solid 3px;
+    background-color: lightgrey;
+    transition: color 0.5s, transform 0.5s;
+}
+
+.buttonListPokemon:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    background-color: white;
+}

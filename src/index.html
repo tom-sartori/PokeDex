@@ -9,11 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="./ressources/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 
     <!--Style -->
     <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="./style/general.css">
+    <link rel="stylesheet" href="./style/pokemonListDisplay.css">
+    <link rel="stylesheet" href="./style/pokemonDetailDisplay.css">
+    <link rel="stylesheet" href="./style/media.css">
 
     <!--Style Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -29,47 +32,37 @@
 
     <header>
         <nav>
-            <button v-on:click="refreshList">Pokédex</button>
+            <div class="nav-wrapper">
+                <button v-on:click="refreshList" id="buttonPokedex" class="waves-effect waves-teal btn-flat">Pokédex</button>
+            </div>
         </nav>
     </header>
 
     <div class="container">
 
         <!--    Search section-->
-        <section>
+        <section class="sectionSearch">
             <label>
-                <input v-on:keypress.enter="searchPokemon" placeholder="Searchbar" value="">
+                <input class="inputSearch" v-on:keypress.enter="searchPokemon" placeholder="Searchbar" value="">
             </label>
         </section>
 
         <main>
 
-
+<!--            Div de la liste des pokémons. -->
             <div v-if="!currentPokemon">
-                <ul>
+                <ul class="ulListPokemon">
                     <li v-for="pokemon in listPokemon">
                         <pokemon-list-display :name="pokemon.name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>
                     </li>
                 </ul>
             </div>
 
-            <!--            <pokemon-list-display :name="test" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>-->
 
-
-
-            <!--            <ul>-->
-            <!--                <li v-for="name in listNamePokemon">-->
-            <!--&lt;!&ndash;                    <pokemon-list-display :name="name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>&ndash;&gt;-->
-            <!--                    <pokemon-detail-display :name="name" ></pokemon-detail-display>-->
-            <!--                </li>-->
-            <!--            </ul>-->
-
-
+<!--            Div vue détail d'un pokémon. -->
             <div v-if="currentPokemon">
                 <pokemon-detail-display :name="currentPokemon" ></pokemon-detail-display>
             </div>
-
-
 
         </main>
 

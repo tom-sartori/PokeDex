@@ -1,0 +1,22 @@
+
+@media only screen and (max-width: 1600px) {
+    .ulListPokemon {
+        grid-template-columns: auto auto auto;
+    }
+
+    .sectionDetailPokemon {
+        grid-template-columns: auto;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .ulListPokemon {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .ulListPokemon {
+        grid-template-columns: auto;
+    }
+}

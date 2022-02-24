@@ -8,10 +8,16 @@ app.component('pokemon-list-display', {
     data() {
         return {
             id: '',
+            color: 'white'
         }
     },
     mounted() {
         this.fetchData()
+
+        fetch('https://pokeapi.co/api/v2/pokemon-species/' + this.name)
+            .then(response => response.json())
+            .then(data => this.color = data.color.name)
+            .catch(error => console.log(error.message))
     },
     methods: {
         fetchData () {
@@ -25,22 +31,31 @@ app.component('pokemon-list-display', {
         },
         setCurrentPokemon () {
             this.$emit('set-current-pokemon', this.name)
-        }
+        },
     },
     computed: {
         srcImage () {
-            return 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + this.largeId + '.png'
+            if (this.largeId !== '00') {    // Fetch only if valid id.
+                return 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + this.largeId + '.png'
+            }
         },
         largeId () {
             // If id = 1, return 001
             return idString(this.id)
-        }
+        },
+        title () {
+            return capitalizeFirstLetter(this.name)
+        },
     },
     template:
     /*html*/
         `
           <div>
-          <button v-on:click="setCurrentPokemon">
+          <button 
+              class="buttonListPokemon" 
+              v-on:click="setCurrentPokemon" 
+              :style="{ borderColor: color }"
+          >
             <figure>
               <img :alt="name" :src="srcImage">
             </figure>
@@ -49,7 +64,7 @@ app.component('pokemon-list-display', {
               <p>
                 # {{ this.largeId }}
               </p>
-              <h5>{{ name }}</h5>
+              <h5>{{ title }}</h5>
             </div>
           </button>
           </div>

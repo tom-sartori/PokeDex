@@ -57,36 +57,36 @@ app.component('pokemon-detail-display', {
     template:
     /*html*/
         `
-        <h2>{{ title }}</h2>
-        <section class="row">
-          <div class="col s6">
-            <img :alt="alt" :src="imgSrc">
+          <h2 class="h2DetailPokemon">{{ title }} # {{ largeId }}</h2>
+          <section class="sectionDetailPokemon">
+          <div>
+            <img :alt="alt" :src="imgSrc" class="imgDetailPokemon">
           </div>
 
-          <div class="col s6">
+          <div class="divDetailPokemon">
+
             <h3>Characteristics</h3>
             <ul>
               <li v-for="(value, title) in this.characteristics">
-                <span class="attribute-title">{{ title }}</span>
-                <span class="attribute-value">{{ value }}</span>
+                <p>{{ title }} : {{ value }}</p>
               </li>
-
-              <span class="attribute-title">Abilities</span>
-              <ul>
-                <li v-for="ability in this.abilities">
-                  <span class="attribute-value">{{ ability.ability.name }}</span>
-                </li>
-              </ul>
-
-              <span class="attribute-title">Types</span>
-              <ul>
-                <li v-for="type in this.types">
-                  <span class="attribute-value">{{ type.type.name }}</span>
-                </li>
-              </ul>
-
             </ul>
+
+            <h3>Abilities</h3>
+            <ul>
+              <li v-for="ability in this.abilities">
+                <p>{{ ability.ability.name }}</p>
+              </li>
+            </ul>
+
+            <h3>Types</h3>
+            <ul>
+              <li v-for="type in this.types">
+                <p>{{ type.type.name }}</p>
+              </li>
+            </ul>
+
           </div>
-        </section>
+          </section>
         `
 })
