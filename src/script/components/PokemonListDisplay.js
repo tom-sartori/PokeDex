@@ -11,16 +11,18 @@ app.component('pokemon-list-display', {
         }
     },
     mounted() {
-        // Fetch the name from the api
-        fetch('https://pokeapi.co/api/v2/pokemon-form/' + this.name)
-            .then(response => response.json())
-            .then(data => this.id = data.id)
-            .catch(error => console.log(error.message))
-    },
-    setup() {
-
+        this.fetchData()
     },
     methods: {
+        fetchData () {
+            // Fetch the name from the api
+            fetch('https://pokeapi.co/api/v2/pokemon/' + this.name)
+                .then(response => response.json())
+                .then(data => {
+                    this.id = data.id
+                })
+                .catch(error => console.log(error.message))
+        },
         setCurrentPokemon () {
             this.$emit('set-current-pokemon', this.name)
         }
@@ -37,7 +39,7 @@ app.component('pokemon-list-display', {
     template:
     /*html*/
         `
-        <div>
+          <div>
           <button v-on:click="setCurrentPokemon">
             <figure>
               <img :alt="name" :src="srcImage">
@@ -45,11 +47,11 @@ app.component('pokemon-list-display', {
 
             <div>
               <p>
-                <span>#</span> {{ this.largeId }}
+                # {{ this.largeId }}
               </p>
               <h5>{{ name }}</h5>
             </div>
           </button>
-        </div>
+          </div>
         `
 })

@@ -12,7 +12,7 @@ function idString (idValue) {
         return '0' + idValue
     }
     else {
-        return '' + idValue
+        return idValue.toString()
     }
 }
 

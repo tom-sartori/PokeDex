@@ -22,6 +22,9 @@ TODO
 
 
 - [ ] Lien list détail 
+  
+
+- [ ] Responsive
 
 
 - [ ] Abilities

@@ -29,7 +29,7 @@
 
     <header>
         <nav>
-            <button v-on:click="currentPokemon = ''">Pokédex</button>
+            <button v-on:click="refreshList">Pokédex</button>
         </nav>
     </header>
 
@@ -38,15 +38,8 @@
         <!--    Search section-->
         <section>
             <label>
-                <input placeholder="Searchbar">
+                <input v-on:keypress.enter="searchPokemon" placeholder="Searchbar" value="">
             </label>
-        </section>
-
-        <!--    Sort section-->
-        <section class="row">
-            <a class="col s5 waves-effect waves-light btn-small">Randomize</a>
-
-            <a class="col s5 push-s2 waves-effect waves-light btn-small">Sort</a>
         </section>
 
         <main>
@@ -54,8 +47,8 @@
 
             <div v-if="!currentPokemon">
                 <ul>
-                    <li v-for="name in listNamePokemon">
-                        <pokemon-list-display :name="name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>
+                    <li v-for="pokemon in listPokemon">
+                        <pokemon-list-display :name="pokemon.name" @set-current-pokemon="updateCurrentPokemon"></pokemon-list-display>
                     </li>
                 </ul>
             </div>
@@ -94,6 +87,8 @@
 <script src="script/components/PokemonListDisplay.js"></script>
 <script src="script/components/PokemonDetailDisplay.js"></script>
 
+<!--Import Events-->
+<script src="./script/events/scrollDown.js"></script>
 
 <!-- Mount App -->
 <script>

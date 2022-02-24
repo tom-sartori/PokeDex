@@ -13,29 +13,43 @@ app.component('pokemon-detail-display', {
                 weight: '',
             },
             abilities: [],
-            types: []
+            types: [],
+            oldName: '' // Used to refresh data
         }
     },
     mounted() {
-        fetch('https://pokeapi.co/api/v2/pokemon/' + this.name)
-            .then(response => response.json())
-            .then(data => {
-                this.id = data.id
-                this.characteristics.height = data.height
-                this.characteristics.weight = data.weight
-                this.abilities = data.abilities
-                this.types = data.types
-            })
-            .catch(error => console.log(error.message))
+        this.fetchData()
+    },
+    methods: {
+        fetchData () {
+            if (this.oldName !== this.name) {    // When the name is changed, we need to fetch new data.
+                fetch('https://pokeapi.co/api/v2/pokemon/' + this.name)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.oldName = this.name
+                        this.id = data.id
+                        this.characteristics.height = data.height
+                        this.characteristics.weight = data.weight
+                        this.abilities = data.abilities
+                        this.types = data.types
+                    })
+                    .catch(error => console.log(error.message))
+            }
+        }
     },
     computed: {
+        title () {
+            return capitalizeFirstLetter(this.name)
+        },
         alt () {
-            return capitalizeFirstLetter(name)
+            return capitalizeFirstLetter(this.name)
         },
         imgSrc () {
+            this.fetchData()
             return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + this.largeId + '.png'
         },
         largeId () {
+            this.fetchData()
             // If id = 1, return 001
             return idString(this.id)
         }
@@ -43,6 +57,7 @@ app.component('pokemon-detail-display', {
     template:
     /*html*/
         `
+        <h2>{{ title }}</h2>
         <section class="row">
           <div class="col s6">
             <img :alt="alt" :src="imgSrc">
